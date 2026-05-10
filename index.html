@@ -3,19 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sunny and Bunny Bookshop | Find Your Next Read</title>
+    <title>Sunny and Bunny Restaurant | Order Food</title>
     <style>
-        /* Modern Bookstore Color Palette */
+        /* Zomato-Inspired Color Palette */
         :root {
-            --brand-blue: #2874f0; /* Vibrant Blue */
-            --tag-orange: #ff9f00; /* Energetic Orange */
-            --dark-text: #212121;
-            --light-grey: #f1f3f6;
+            --zomato-red: #ef4f5f;
+            --dark-text: #1c1c1c;
+            --light-grey: #f8f8f8;
             --white: #ffffff;
         }
 
         body {
-            font-family: 'Inter', -apple-system, sans-serif;
+            font-family: 'Okra', Helvetica, sans-serif;
             margin: 0;
             background-color: var(--white);
             color: var(--dark-text);
@@ -27,50 +26,47 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
-            background: var(--brand-blue);
+            background: white;
             z-index: 100;
         }
 
         .brand-name {
-            font-size: 26px;
-            font-weight: 900;
-            color: var(--white);
-            letter-spacing: -0.5px;
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--zomato-red);
+            font-style: italic;
         }
 
         nav a {
             margin-left: 25px;
             text-decoration: none;
-            color: var(--white);
-            font-weight: 500;
-            font-size: 14px;
+            color: #696969;
+            font-weight: 400;
         }
 
         /* Search Section */
         .search-container {
-            background-color: var(--brand-blue);
-            padding: 40px 10% 60px 10%;
+            background-color: var(--light-grey);
+            padding: 50px 10%;
             text-align: center;
-            color: white;
         }
 
         .search-container h1 {
-            font-size: 32px;
-            margin-bottom: 25px;
-            font-weight: 700;
+            font-size: 36px;
+            margin-bottom: 20px;
         }
 
         .search-bar {
             background: white;
-            padding: 12px 20px;
-            border-radius: 4px; /* Classic e-commerce look */
+            padding: 15px;
+            border-radius: 10px;
             display: inline-flex;
-            width: 90%;
-            max-width: 700px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         .search-bar input {
@@ -78,174 +74,131 @@
             width: 100%;
             outline: none;
             font-size: 16px;
-            color: #333;
         }
 
-        /* Book Grid Section */
+        /* Food Cards Section */
         .container {
             padding: 40px 10%;
         }
 
         .section-title {
-            font-size: 22px;
-            font-weight: 700;
-            margin-bottom: 25px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 20px;
         }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
         }
 
-        /* Book Card Layout */
         .card {
-            background: white;
-            border-radius: 8px;
-            padding: 15px;
-            transition: box-shadow 0.3s;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.2s;
             cursor: pointer;
-            border: 1px solid #e0e0e0;
-            text-align: left;
+            border: 1px solid #e8e8e8;
         }
 
         .card:hover {
-            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+            transform: scale(1.02);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
 
         .card-img {
-            height: 250px;
+            height: 200px;
             width: 100%;
-            background-size: contain;
-            background-repeat: no-repeat;
+            background-size: cover;
             background-position: center;
-            margin-bottom: 15px;
+        }
+
+        .card-content {
+            padding: 15px;
         }
 
         .card-content h3 {
             margin: 0;
-            font-size: 16px;
-            height: 40px; /* Limits title height */
-            overflow: hidden;
-            color: var(--dark-text);
+            display: flex;
+            justify-content: space-between;
         }
 
-        .author {
-            color: #878787;
-            font-size: 13px;
-            margin: 5px 0;
-        }
-
-        .rating-badge {
-            background: #388e3c;
+        .rating {
+            background: #24963f;
             color: white;
-            padding: 2px 8px;
-            border-radius: 3px;
-            font-size: 12px;
-            font-weight: bold;
-        }
-
-        .pricing {
-            margin-top: 10px;
-            font-size: 18px;
-            font-weight: 700;
-        }
-
-        .old-price {
-            text-decoration: line-through;
-            color: #878787;
+            padding: 2px 6px;
+            border-radius: 5px;
             font-size: 14px;
-            margin-left: 8px;
+        }
+
+        .price-text {
+            color: #696969;
+            font-size: 14px;
+            margin-top: 5px;
         }
 
         /* Footer */
         footer {
-            background: #172337;
-            color: white;
+            background: #fcfcfc;
             padding: 40px 10%;
-            margin-top: 50px;
+            margin-top: 40px;
+            border-top: 1px solid #e8e8e8;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="brand-name">Sunny & Bunny Books</div>
+        <div class="brand-name">Sunny & Bunny</div>
         <nav>
-            <a href="#">Best Sellers</a>
-            <a href="#">Categories</a>
-            <a href="#">My Cart</a>
+            <a href="#">Add Restaurant</a>
+            <a href="#">Log in</a>
+            <a href="#">Sign up</a>
         </nav>
     </header>
 
     <section class="search-container">
-        <h1>Over 1 Million Stories Waiting...</h1>
+        <h1>Discover the best food & drinks</h1>
         <div class="search-bar">
-            <input type="text" placeholder="Search by Title, Author, or ISBN">
+            <input type="text" placeholder="Search for restaurant, cuisine or a dish">
         </div>
     </section>
 
     <main class="container">
-        <div class="section-title">
-            <span>New Arrivals</span>
-            <button style="background: var(--brand-blue); color: white; border: none; padding: 8px 15px; border-radius: 2px; cursor: pointer;">View All</button>
-        </div>
-        
+        <h2 class="section-title">Popular Cuisines</h2>
         <div class="grid">
-            <!-- Book 1 -->
+            <!-- Card 1 -->
             <div class="card">
-                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400')"></div>
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500')"></div>
                 <div class="card-content">
-                    <h3>The Midnight Mystery</h3>
-                    <p class="author">by Sunny Bloom</p>
-                    <span class="rating-badge">4.8 ★</span>
-                    <div class="pricing">₹499 <span class="old-price">₹799</span></div>
+                    <h3>Bunny's Special Pizza <span class="rating">4.2 ★</span></h3>
+                    <p class="price-text">Italian, Pizza • ₹300 for one</p>
                 </div>
             </div>
 
-            <!-- Book 2 -->
+            <!-- Card 2 -->
             <div class="card">
-                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=400')"></div>
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1567337710282-00832b415979?w=500')"></div>
                 <div class="card-content">
-                    <h3>Bunny's Coding Guide</h3>
-                    <p class="author">by Bunny Dev</p>
-                    <span class="rating-badge">4.5 ★</span>
-                    <div class="pricing">₹850 <span class="old-price">₹1,200</span></div>
+                    <h3>Sunny's Butter Chicken <span class="rating">4.5 ★</span></h3>
+                    <p class="price-text">North Indian • ₹450 for one</p>
                 </div>
             </div>
 
-            <!-- Book 3 -->
+            <!-- Card 3 -->
             <div class="card">
-                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400')"></div>
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1585032226651-759b368d7246?w=500')"></div>
                 <div class="card-content">
-                    <h3>The Art of Adventure</h3>
-                    <p class="author">by Alex Woods</p>
-                    <span class="rating-badge">4.2 ★</span>
-                    <div class="pricing">₹325 <span class="old-price">₹450</span></div>
-                </div>
-            </div>
-
-            <!-- Book 4 -->
-            <div class="card">
-                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=400')"></div>
-                <div class="card-content">
-                    <h3>Morning Sunlight</h3>
-                    <p class="author">by Clara Ray</p>
-                    <span class="rating-badge">4.9 ★</span>
-                    <div class="pricing">₹299 <span class="old-price">₹599</span></div>
+                    <h3>Dragon Hakka Noodles <span class="rating">3.9 ★</span></h3>
+                    <p class="price-text">Chinese, Street Food • ₹200 for one</p>
                 </div>
             </div>
         </div>
     </main>
 
     <footer>
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-            <div class="brand-name">Sunny & Bunny Books</div>
-            <p style="font-size: 12px; color: #878787;">© 2026 Sunny and Bunny Media Group.</p>
-        </div>
+        <div class="brand-name">Sunny & Bunny</div>
+        <p>© 2026 Sunny and Bunny Restaurant Group. All rights reserved.</p>
     </footer>
 
 </body>
